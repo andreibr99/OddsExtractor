@@ -26,6 +26,12 @@ def extract_ids(num_ids: int) -> List[str]:
     url = "https://www.flashscore.ro/"
     driver.get(url)
 
+    # Meciuri de maine*
+    #program_tab = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[3]/div[1]/div/div/main/div[4]/div[2]/div/div[1]/div[2]/div/button[3]")))
+    #program_tab.click()
+    # Poimaine
+    #program_tab.click()
+
     # se asteapta ca elementul de fila "Program" sa devina vizibil si sa poata fi accesat
     program_tab = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[3]/div[1]/div/div/main/div[4]/div[2]/div/div[1]/div[1]/div[5]")))
 

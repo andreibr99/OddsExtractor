@@ -24,9 +24,21 @@ def get_odds_by_bookmaker(url):
     driver.delete_all_cookies()
 
     # access the web page
-    driver.get(url)
+    max_attempts = 3  # numărul maxim de încercări
+    wait_time = 4  # timpul maxim de așteptare în secunde
 
-    time.sleep(1)
+    for i in range(max_attempts):
+        try:
+            driver.get(url)
+            WebDriverWait(driver, wait_time).until(EC.presence_of_element_located((By.XPATH, '/html/head/meta[5]')))
+            time.sleep(1)
+            break  # iese din bucla dacă pagina s-a încărcat cu succes
+        except:
+            if i == max_attempts - 1:
+                raise Exception("Pagina nu s-a încărcat nici după {} încercări".format(max_attempts))
+            driver.refresh()
+
+    
     
 
     bookmakers = {}  # empty dictionary to store odds by bookmaker

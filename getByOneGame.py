@@ -1,6 +1,6 @@
 from scrape1X2 import get_odds_by_bookmaker
 
-link = f'https://www.flashscore.ro/meci/EaSkCorp/#/comparare-cote/cote-1x2/final'
+link = f'https://www.flashscore.ro/meci/2uZhA6kg/#/comparare-cote/cote-1x2/final'
 
 odds_by_bookmaker, max_odds = get_odds_by_bookmaker(link)
 print('-------------------------------------------------------------------')
