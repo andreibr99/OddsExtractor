@@ -1,27 +1,30 @@
 from ids import extract_ids
 from ids import generate_links
 from scrape1X2 import get_odds_by_bookmaker
+from scrape1X2 import get_odds_from_betfair_page
 
 # Get matches ids
-numberOfMatches = 3
+numberOfMatches = 10
 links = generate_links(extract_ids(numberOfMatches))
 
 arbitrage_list = []
-
+odds_from_betfair = get_odds_from_betfair_page()
 for link in links:
-    odds_by_bookmaker, max_odds = get_odds_by_bookmaker(link)
+    odds_by_bookmaker, max_odds = get_odds_by_bookmaker(link, odds_from_betfair)
+
+    
     
     #if a match does not have any odds skip
     if not odds_by_bookmaker:
         continue
     print('-------------------------------------------------------------------')
     print('Match Name:', odds_by_bookmaker[0]['match_name'])
-    #print('scraped')
-    #  print('Link:', link)
-    #  for odds in odds_by_bookmaker:
-    #      print('Bookmaker:', odds['bookmaker'])
-    #      odds_str = ' - '.join(odds['odds']).replace('\n', '  ')
-    #      print('Odds:', odds_str)
+    print('scraped')
+    print('Link:', link)
+    for odds in odds_by_bookmaker:
+        print('Bookmaker:', odds['bookmaker'])
+        odds_str = ' - '.join(odds['odds']).replace('\n', '  ')
+        print('Odds:', odds_str)
      
     print()
     print('Max Odds:')

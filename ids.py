@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def extract_ids(num_ids: int) -> List[str]:
    # specify the path to the browser driver
-    path = "C:/Users/andre/Downloads/chromedriver_win32/chromedriver.exe"
+    path = "C:\DRIVERS\ChromeDriver\chromedriver.exe"
 
     # create a service for the Chrome driver
     service = Service(path)
